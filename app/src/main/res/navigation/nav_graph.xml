@@ -32,7 +32,7 @@
         tools:layout="@layout/fragment_view_tenants">
         <argument
             android:name="newTenant"
-            app:argType="com.example.tenantmanagementsystemgroupa.Tenant"
+            app:argType="com.example.tenantmanagementsystem.Tenant"
             app:nullable="true"
             android:defaultValue="@null" />
     </fragment>
