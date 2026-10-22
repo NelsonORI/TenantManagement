@@ -35,5 +35,6 @@
             app:argType="com.example.tenantmanagementsystem.Tenant"
             app:nullable="true"
             android:defaultValue="@null" />
+
     </fragment>
 </navigation>
