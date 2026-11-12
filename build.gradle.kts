@@ -4,4 +4,6 @@ plugins {
 
     // Safe Args: generates classes for passing data between screens
     id("androidx.navigation.safeargs.kotlin") version "2.9.8" apply false
+    // KSP generates Room's database code while building
+    id("com.google.devtools.ksp") version "2.3.0" apply false
 }
