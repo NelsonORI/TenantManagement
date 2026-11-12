@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.tenantmanagementsystem.data.model.Tenant
 
 // Which tables the database holds, and its version number
-@Database(entities = [Tenant::class], version = 1)
+@Database(entities = [Tenant::class], version = 1, exportSchema = false)
 abstract class TenantDatabase : RoomDatabase() {
 
     abstract fun tenantDao(): TenantDao
