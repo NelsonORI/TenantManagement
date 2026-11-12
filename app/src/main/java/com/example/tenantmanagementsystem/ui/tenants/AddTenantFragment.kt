@@ -44,7 +44,7 @@ class AddTenantFragment : Fragment() {
             }
 
             // Otherwise, navigate forward using Safe Args
-            val action = AddTenantFragmentDirections.addTenantFragmentToViewTenantsFragment(tenant)
+            val action = AddTenantFragmentDirections.actionAddTenantFragmentToViewTenantsFragment(tenant)
             findNavController().navigate(action)
         }
 
