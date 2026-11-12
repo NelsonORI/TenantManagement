@@ -11,10 +11,18 @@ import android.util.Log
 import com.example.tenantmanagementsystem.data.repository.TenantRepository
 // Generated from fragment_dashboard.xml (View Binding)
 import com.example.tenantmanagementsystem.databinding.FragmentDashboardBinding
+import androidx.fragment.app.activityViewModels
+import com.example.tenantmanagementsystem.ui.viewmodel.TenantViewModel
+import kotlin.collections.getValue
+
 class DashboardFragment : Fragment() {
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
     // 1. The Fragment OBJECT is created (no view yet)
+
+    // The SHARED ViewModel: every Fragment in MainActivity gets the SAME one
+    private val viewModel: TenantViewModel by activityViewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("TENANT_LIFECYCLE", " DashboardFragment: onCreate")
@@ -33,10 +41,10 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d("TENANT_LIFECYCLE", " DashboardFragment: onViewCreated")
-        val tenantCount = TenantRepository.tenants.size
-        val totalRent = TenantRepository.totalRent()
-        binding.tenantCountTextView.text = "Tenants\n$tenantCount"
-        binding.totalRentTextView.text = "Total rent\nKSh %,.0f".format(totalRent)
+
+        // Give the ViewModel to the layout and let it watch LiveData updates
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.addTenantButton.setOnClickListener {
             val action = DashboardFragmentDirections.actionDashboardFragmentToAddTenantFragment()
             findNavController().navigate(action)
